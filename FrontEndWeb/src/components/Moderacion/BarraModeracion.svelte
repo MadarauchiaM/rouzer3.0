@@ -9,13 +9,15 @@
         <a href="/Moderacion/Media"
             ><Button outlined>Imagenes y videos</Button>
         </a>
-        {#if $globalStore.usuario.esAdmin}
+        {#if $globalStore.usuario.esMod}
             <a href="/Moderacion/ListaDeUsuarios"
                 ><Button outlined>Usuarios y baneos</Button>
             </a>
             <a href="/Moderacion/EliminadosYDesactivados"
                 ><Button outlined>Eliminados y desactivados</Button>
             </a>
+        {/if}
+        {#if $globalStore.usuario.esAdmin}
             <a href="/Moderacion/Historial"
                 ><Button outlined>Historial</Button>
             </a>

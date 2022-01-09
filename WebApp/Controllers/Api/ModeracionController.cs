@@ -119,7 +119,7 @@ namespace WebApp.Controllers
             return View(new { hilos, comentarios, denuncias, medias });
         }
 
-        [Route("/Moderacion/ListaDeUsuarios"), Authorize("esAdmin")]
+        [Route("/Moderacion/ListaDeUsuarios"), Authorize("esMod")]
         public async Task<ActionResult> ListaDeUsuarios()
         {
             var ultimosRegistros = await context.Users
@@ -201,7 +201,7 @@ namespace WebApp.Controllers
             });
         }
 
-        [Route("/Moderacion/EliminadosYDesactivados"), Authorize("esAdmin")]
+        [Route("/Moderacion/EliminadosYDesactivados"), Authorize("esMod")]
         public async Task<ActionResult> EliminadosYDesactivados()
         {
             var hilos = await context.Hilos

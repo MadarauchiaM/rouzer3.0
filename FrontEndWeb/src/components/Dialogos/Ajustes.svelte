@@ -139,6 +139,18 @@
                 bind:checked={$ajustesConfigStore.desactivarCuetitos}
                 right>Desactivar cuetitos</Checkbox
             >-->
+            <hr />
+            <div style="display:flex;align-items: baseline;gap: 10px;">
+                <label for="comentarioModo">Comentarios: </label>
+                <select
+                    bind:value={$ajustesConfigStore.comentarioModo}
+                    name="comentarioModo"
+                >
+                    <option value="0">Carga total</option>
+                    <option value="1">Carga parcial</option>
+                    <option value="2">Carga por páginas</option>
+                </select>
+            </div>
         </ExpansionPanel>
 
         <ExpansionPanel bind:group name="Auto censura">
@@ -157,10 +169,18 @@
 
         {#if $globalStore.usuario.esAuxiliar}
             <ExpansionPanel bind:group name="Mod">
-                <Checkbox
-                    bind:checked={$ajustesConfigModStore.mutearDenuncias}
-                    right>Mutear denuncias</Checkbox
+                <label for="volumen-denuncias"
+                    >Volumen denuncias: {$ajustesConfigModStore.volumenDenuncias ||
+                        0.03}</label
                 >
+                <input
+                    name="volumen-denuncias"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    bind:value={$ajustesConfigModStore.volumenDenuncias}
+                />
                 <Checkbox
                     bind:checked={$ajustesConfigModStore.autoDesplegarDenuncias}
                     right>Auto desplegar denuncias</Checkbox

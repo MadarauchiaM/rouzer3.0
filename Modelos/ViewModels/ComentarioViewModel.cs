@@ -54,14 +54,6 @@ namespace Modelos
                 if (!hilo.Flags.Contains("b") && !hilo.Flags.Contains("s"))
                 {
                     this.Banderita = comentario.Pais;
-                    if (comentario.UsuarioId == "954c1d80-0a87-4e1a-9784-1ffc667c598f")
-                    {
-                        this.Banderita = "py";
-                    }
-                    if (comentario.UsuarioId == "7c599f68-6195-4d08-b7af-34052d2a3f44")
-                    {
-                        this.Banderita = "cl";
-                    }
                     if (!string.IsNullOrEmpty(comentario.Nombre) || comentario.Rango != CreacionRango.Anon)
                     {
                         this.Banderita = null;

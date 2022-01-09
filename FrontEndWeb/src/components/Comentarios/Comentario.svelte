@@ -14,7 +14,7 @@
     import selectorStore from "../Moderacion/selectorStore";
     import teclas from "../../shorcuts";
     import RChanClient from "../../RChanClient";
-    // import Audio from "../Audio.svelte";
+    import Audio from "../Audio.svelte";
     import MediaType from "../../MediaType";
     import Spinner from "../Spinner.svelte";
 
@@ -94,7 +94,7 @@
     }
 
     function seleccionar() {
-        if (!$globalStore.usuario.esMod) return;
+        if (!$globalStore.usuario.esAuxiliar) return;
         selectorStore.selecionar(comentario.id);
     }
 
@@ -414,9 +414,9 @@
             {#if comentario.media}
                 <Media media={comentario.media} bind:abierto={mediaExpandido} />
             {/if}
-            <!--{#if comentario.audio}
+            {#if comentario.audio}
                 <Audio urlBlobAudio={comentario.audio.url} />
-            {/if}-->
+            {/if}
             <span class="texto">
                 {@html comentario.contenido}
             </span>

@@ -19,7 +19,6 @@
     $: modoRegistro = modo == "registro";
 
     async function accion(e) {
-        console.log(captcha);
         try {
             if (modoRegistro)
                 await RChanClient.registrase(

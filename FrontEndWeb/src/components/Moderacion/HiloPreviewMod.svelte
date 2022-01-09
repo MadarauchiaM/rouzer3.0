@@ -29,7 +29,6 @@
     .hilo-preview-mod :global(.hilo a.es-gif) {
         background-size: contain !important;
     }
-
     .eliminado {
         border-left: solid 2px red;
     }

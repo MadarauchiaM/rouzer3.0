@@ -136,7 +136,10 @@
             <Checkbox bind:checked={$dialogosStore.eliminarMedia} right
                 >Eliminar Archivos</Checkbox
             >
-            {#if $dialogosStore.eliminarMedia}
+            <Checkbox bind:checked={$dialogosStore.eliminarAudio} right
+                >Eliminar Audio</Checkbox
+            >
+            {#if $dialogosStore.eliminarMedia || $dialogosStore.eliminarAudio}
                 <Textfield
                     autocomplete="new-password"
                     label="Contraseña"
@@ -146,9 +149,6 @@
                     message="contraseña"
                 />
             {/if}
-            <!--<Checkbox bind:checked={$dialogosStore.eliminarAudio} right
-                >Eliminar Audio</Checkbox
-            >-->
         {/if}
     </div>
 </Dialogo>
@@ -198,7 +198,10 @@
             <Checkbox bind:checked={$dialogosStore.eliminarMedia} right
                 >Eliminar Archivos</Checkbox
             >
-            {#if $dialogosStore.eliminarMedia}
+            <Checkbox bind:checked={$dialogosStore.eliminarAudio} right
+                >Eliminar Audio</Checkbox
+            >
+            {#if $dialogosStore.eliminarMedia || $dialogosStore.eliminarAudio}
                 <Textfield
                     autocomplete="new-password"
                     label="Contraseña"
@@ -208,9 +211,6 @@
                     message="contraseña"
                 />
             {/if}
-            <!--<Checkbox bind:checked={$dialogosStore.eliminarAudio} right
-                >Eliminar Audio</Checkbox
-            >-->
         {/if}
     </div>
 </Dialogo>

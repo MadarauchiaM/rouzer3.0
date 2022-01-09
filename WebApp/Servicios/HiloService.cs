@@ -312,7 +312,7 @@ namespace Servicios
             if (hilo.Contenido.Contains(">>dados")) hilo.Flags += "d";
             if (hilo.Contenido.Contains(">>idunico")) hilo.Flags += "i";
             if (hilo.Contenido.Contains(">>serio")) hilo.Flags += "s";
-            //if (hilo.Contenido.Contains(">>audios")) hilo.Flags += "a";
+            if (hilo.Contenido.Contains(">>audios")) hilo.Flags += "a";
 
             hilo.Contenido = formateador.Parsear(hilo.Contenido);
             await _context.SaveChangesAsync();
@@ -472,6 +472,7 @@ namespace Servicios
                 Historico = h.Flags.Contains("h"),
                 Serio = h.Flags.Contains("s"),
                 Concentracion = h.Flags.Contains("c"),
+                Audios = h.Flags.Contains("a"),
                 Encuesta = h.Encuesta != null,
                 CantidadComentarios = context.Comentarios.Where(c => c.HiloId == h.Id && c.Estado == ComentarioEstado.Normal).Count()
             });

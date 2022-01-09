@@ -51,9 +51,11 @@
             <li>
                 <Media media={m} modoCuadrado={true} />
                 <!-- <Button color="var(--color1)" raised on:click={() => abrir.eliminarMedia(m.id)} style="display:none">Eliminar</Button> -->
-                <div class="check">
-                    <Checkbox bind:checked={m.seleccionado} />
-                </div>
+                {#if $globalStore.usuario.esMod}
+                    <div class="check">
+                        <Checkbox bind:checked={m.seleccionado} />
+                    </div>
+                {/if}
             </li>
         {/each}
     </ul>

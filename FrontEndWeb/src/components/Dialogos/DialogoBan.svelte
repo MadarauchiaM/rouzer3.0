@@ -92,7 +92,15 @@
                 >
                     Eliminar adjunto(imagen/video)</Checkbox
                 >
-                {#if eliminarAdjunto}
+                <Checkbox
+                    style="padding: 0 8px"
+                    title="Borra el audio del servidor"
+                    bind:checked={eliminarAudio}
+                    right
+                >
+                    Eliminar audio</Checkbox
+                >
+                {#if eliminarAdjunto || eliminarAudio}
                     <Textfield
                         autocomplete="new-password"
                         label="Contraseña"
@@ -102,14 +110,6 @@
                         message="contraseña"
                     />
                 {/if}
-                <!--<Checkbox
-                style="padding: 0 8px"
-                title="Borra el audio del servidor"
-                bind:checked={eliminarAudio}
-                right
-            >
-                Eliminar audio</Checkbox
-            >-->
             {/if}
         {/if}
         {#if duracion > 5000}

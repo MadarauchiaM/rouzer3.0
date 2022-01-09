@@ -16,7 +16,6 @@
     }
 
     async function accion(e) {
-        console.log(captcha);
         try {
             let result = await (await fpPromise).get();
             await RChanClient.inicio(captcha, result.visitorId, codigo);

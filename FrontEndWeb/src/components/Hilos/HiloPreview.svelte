@@ -229,7 +229,6 @@
             vistaPrevia = `/Media/${media.url}`;
         }
     }
-
     function reset() {
         if (media.url.includes(".gif")) {
             vistaPrevia = media.vistaPreviaCuadrado;
@@ -368,32 +367,24 @@
                 </div>{/if}
             {#if hilo.dados}<Dado />{/if}
             {#if hilo.concentracion}
-                <div
-                    class="info"
-                    style="padding: 0px 0 !important;
-                border-radius: 4px !important;
-                margin: 0 2px;
-                background: var(--color3);"
-                >
+                <div class="info flag">
                     <span class="fe fe-puas" />
                 </div>{/if}
             {#if hilo.serio}
-                <div
-                    class="info"
-                    style="padding: 0px 0 !important;
-                border-radius: 4px !important;
-                margin: 0 2px;
-                background: var(--color3);"
-                >
+                <div class="info flag">
                     <span class="fe fe-serio" />
                 </div>{/if}
             {#if hilo.historico}
                 <div
-                    class="info svelte-12j5r62 fe fe-anchor"
+                    class="info fe fe-anchor"
                     style="background: var(--color6);"
                 />
             {/if}
-
+            {#if hilo.audios}
+                <div class="info flag">
+                    <span class="fe fe-mic" />
+                </div>
+            {/if}
             <div class="info">{hilo.cantidadComentarios}</div>
         </div>
 
@@ -407,7 +398,12 @@
         margin: 0;
         height: 18px !important;
     }
-
+    .flag {
+        padding: 0px 0 !important;
+        border-radius: 4px !important;
+        margin: 0 2px;
+        background: var(--color3);
+    }
     .info:first-child {
         border-radius: 50px 0 0 50px !important;
     }

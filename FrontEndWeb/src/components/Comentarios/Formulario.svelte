@@ -8,9 +8,9 @@
     import Spinner from "../Spinner.svelte";
     import config from "../../config";
     import globalStore from "../../globalStore";
-    // import AudioInput from "../AudioInput.svelte";
+    import AudioInput from "../AudioInput.svelte";
     import { fpPromise } from "../../fingerprint";
-    import ajustesConfigStore from "../Dialogos/ajustesConfigStore";
+    //import ajustesConfigStore from "../Dialogos/ajustesConfigStore";
 
     let dispatch = createEventDispatcher();
 
@@ -22,7 +22,7 @@
     let media;
     let mediaInput;
     let audio = null;
-    //let audioInput;
+    let audioInput;
 
     let mostrarRango = false;
     let mostrarNombre = false;
@@ -53,10 +53,7 @@
                 hide = hide_flag;
             }
             let result = await (await fpPromise).get();
-            if (
-                $globalStore.usuario.esMod ||
-                ($globalStore.usuario.esAuxiliar && config.general.modoSerenito)
-            ) {
+            if ($globalStore.usuario.esAuxiliar) {
                 await RChanClient.crearComentario(
                     hilo.id,
                     comentarioConFlag,
@@ -88,7 +85,7 @@
                 hide_flag = false;
             }
             mediaInput.removerArchivo();
-            //if (hilo.audios) audioInput.removerArchivo();
+            if (hilo.audios) audioInput.removerArchivo();
             dispatch("comentarioCreado");
         } catch (e) {
             error = e.response.data;
@@ -118,9 +115,9 @@
 >
     <ErrorValidacion {error} />
     <MediaInput bind:this={mediaInput} bind:media compacto={true} />
-    <!--{#if hilo.audios}
+    {#if hilo.audios}
         <AudioInput bind:this={audioInput} bind:blobAudio={audio} />
-    {/if}-->
+    {/if}
     <textarea
         on:focus={onFocus}
         bind:value={$comentarioStore}
@@ -135,7 +132,7 @@
                 ><Checkbox bind:checked={hide_flag} right>Hide</Checkbox></span
             >
         </div>
-        {#if $globalStore.usuario.esMod || ($globalStore.usuario.esAuxiliar && config.general.modoSerenito)}
+        {#if $globalStore.usuario.esAuxiliar}
             <div style=" flex-direction:row; display:flex; flex-wrap: wrap;">
                 <span style="width: fit-content;margin-right: auto;"
                     ><Checkbox bind:checked={mostrarRango} right
